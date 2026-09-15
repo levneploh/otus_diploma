@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: mart_listings_by_category
+    description: "Количество объявлений по категориям (5 витрин: №1)"
+    columns:
+      - name: category_name
+        description: "Название категории"
+      - name: listing_count
+        description: "Число объявлений"
+      - name: avg_price
+        description: "Средняя цена объявления"
+
+  - name: mart_dau
+    description: "DAU по платформам (5 витрин: №2)"
+    columns:
+      - name: day
+        description: "Дата"
+      - name: platform
+        description: "Платформа (web/mweb/ios/android)"
+      - name: dau
+        description: "Уникальные пользователи за день"
+
+  - name: mart_revenue_daily
+    description: "Выручка по дням (5 витрин: №3)"
+    columns:
+      - name: day
+        description: "Дата"
+      - name: revenue
+        description: "Сумма выручки за день"
+
+  - name: mart_revenue_monthly_yoy
+    description: "Выручка по месяцам + сравнение год-к-году (5 витрин: №3)"
+    columns:
+      - name: month
+        description: "Месяц"
+      - name: revenue
+        description: "Выручка за месяц"
+      - name: revenue_prev_year
+        description: "Выручка за тот же месяц год назад"
+      - name: yoy_growth
+        description: "Прирост год-к-году (доля)"
+
+  - name: mart_vas
+    description: "VAS metrics — покупки и выручка платных услуг (5 витрин: №4)"
+    columns:
+      - name: vas_type_name
+        description: "Тип услуги"
+      - name: purchases
+        description: "Число покупок"
+      - name: revenue
+        description: "Выручка по услуге"
+
+  - name: mart_arpu_monthly
+    description: "ARPU = выручка / MAU по месяцам (5 витрин: №5)"
+    columns:
+      - name: month
+        description: "Месяц"
+      - name: revenue
+        description: "Выручка за месяц"
+      - name: active_users
+        description: "MAU (уникальные активные пользователи)"
+      - name: arpu
+        description: "Средняя выручка на пользователя"

@@ -1,0 +1,20 @@
+name: 'dwh'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dwh'
+
+model-paths: ["models"]
+
+vars:
+  # Адрес MinIO (озеро). Для запуска в контейнере: MINIO_ENDPOINT=http://minio:9000
+  minio_endpoint: "{{ env_var('MINIO_ENDPOINT', 'http://localhost:9000') }}"
+
+models:
+  dwh:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

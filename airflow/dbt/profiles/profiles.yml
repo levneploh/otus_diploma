@@ -1,0 +1,13 @@
+dwh:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      host: "{{ env_var('CLICKHOUSE_HOST', 'localhost') }}"
+      port: 9000
+      user: "{{ env_var('CLICKHOUSE_USER', 'default') }}"
+      password: "{{ env_var('CLICKHOUSE_PASSWORD', '') }}"
+      schema: dwh
+      threads: 4
+      custom_settings:
+        s3_allow_server_credentials_in_user_queries: "1"

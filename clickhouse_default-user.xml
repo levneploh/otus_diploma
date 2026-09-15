@@ -1,0 +1,14 @@
+<clickhouse>
+  <users>
+    <default>
+      <networks>
+        <ip>::/0</ip>
+      </networks>
+    </default>
+  </users>
+  <profiles>
+    <default>
+      <s3_allow_server_credentials_in_user_queries>1</s3_allow_server_credentials_in_user_queries>
+    </default>
+  </profiles>
+</clickhouse>
