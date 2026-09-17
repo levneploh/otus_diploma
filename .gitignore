@@ -1,1 +1,33 @@
 .env
+.env.*
+
+**/.git/
+
+postgres_data/
+mysql_data/
+kafka_data/
+minio_data/
+clickhouse_data/
+clickhouse_logs/
+superset/db_home/
+superset/superset_home/
+
+# runtime
+airflow/logs/
+**/target/
+**/dbt_packages/
+dbt/logs/
+airflow/dbt/logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / редактор
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
