@@ -44,7 +44,7 @@ MYSQL_HOST = os.environ.get("MYSQL_HOST", "localhost")
 MYSQL_PORT = _env_int("MYSQL_PORT", 3306)
 MYSQL_USER = os.environ.get("MYSQL_USER", "app")
 MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "app")
-MYSQL_DB = os.environ.get("MYSQL_DB", "dicts")
+MYSQL_DB = os.environ.get("MYSQL_DB", "dict")
 
 KAFKA_BOOTSTRAP = os.environ.get("KAFKA_BOOTSTRAP", "localhost:9092")
 KAFKA_TOPIC = os.environ.get("KAFKA_TOPIC", "user_activity")
