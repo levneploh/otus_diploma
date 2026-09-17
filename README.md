@@ -77,24 +77,32 @@ docker compose up -d
 
  ### superset
 
- клонируем репо 
+ клонируем репо вне текущей директории, например ~/Desktop/lev-superset
+```
+mkdir ~/Desktop/lev-superset
+```
+
  ```
- git clone --depth 1 --branch 6.1.0 https://github.com/apache/superset.git
+ git clone --depth 1 --branch 6.1.0 https://github.com/apache/superset.git ~/Desktop/lev-superset
  ```
 
 
 кладем кастомный dockerfile и docker-compose
 ```
-mkdir superset/custom
-cp superset-files/Dockerfile superset/custom/
-cp superset-files/docker-compose-non-dev.yml superset/docker-compose-non-dev.yml
+mkdir ~/Desktop/lev-superset/custom
+cp superset-files/Dockerfile ~/Desktop/lev-superset/custom
+cp superset-files/docker-compose-non-dev.yml ~/Desktop/lev-superset/docker-compose-non-dev.yml
 ```
 
 отключить загрузку примеров
 ```
-в файле superset/docker/.env
+в файле ~/Desktop/lev-superset/docker/.env
 выставить 
 SUPERSET_LOAD_EXAMPLES=no
+```
+
+```
+cd ~/Desktop/lev-superset
 ```
 
 собрать - 
