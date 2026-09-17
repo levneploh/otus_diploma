@@ -59,7 +59,12 @@ docker compose up -d
 ### airflow
 ```
 cd airflow
-#создайте .env файл:
+```
+
+###### создайте .env файл:
+
+```
+
 KEY=$(python3 -c "import base64, os; print(base64.urlsafe_b64encode(os.urandom(32)).decode())")
 echo -e "AIRFLOW_UID=$(id -u)" > .env
 echo "FERNET_KEY=${KEY}" >> .env
@@ -70,11 +75,39 @@ docker compose up -d
 ```
  
 
- 2.2 superset
- 
- 
+ ### superset
 
- 3 - заводим таблицы в mysql и pg.
+ клонируем репо 
+ ```
+ git clone --depth 1 --branch 6.1.0 https://github.com/apache/superset.git
+ ```
+
+
+кладем кастомный dockerfile и docker-compose
+```
+mkdir superset/custom
+cp superset-files/Dockerfile superset/custom/
+cp superset-files/docker-compose-non-dev.yml superset/docker-compose-non-dev.yml
+```
+
+отключить загрузку примеров
+```
+в файле superset/docker/.env
+выставить 
+SUPERSET_LOAD_EXAMPLES=no
+```
+
+собрать - 
+```
+docker compose -f docker-compose-non-dev.yml build
+```
+
+ запустить
+ ```
+ docker compose -f docker-compose-non-dev.yml up -d
+ ```
+
+ 
  4 - генерируем тестовые данные 
      docker compose --profile seed run --rm generator
  5 - далее запускаем подряд dags - 
