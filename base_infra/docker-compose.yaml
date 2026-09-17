@@ -8,7 +8,6 @@ services:
     tty: true
   broker:
     image: apache/kafka:3.8.0
-    container_name: broker
     restart: unless-stopped
     environment:
       KAFKA_NODE_ID: 1
@@ -26,8 +25,7 @@ services:
     volumes:
       - ./kafka_data:/var/lib/kafka/data
   clickhouse:
-    image: dockerhub.timeweb.cloud/clickhouse/clickhouse-server:26.7.3.19
-    container_name: clickhouse
+    image: clickhouse/clickhouse-server:26.7.3.19
     environment:
       AWS_ACCESS_KEY_ID: "${MINIO_ROOT_USER}"
       AWS_SECRET_ACCESS_KEY: "${MINIO_ROOT_PASSWORD}"
@@ -37,8 +35,7 @@ services:
       - ./clickhouse_data:/var/lib/clickhouse
       - ./clickhouse_default-user.xml:/etc/clickhouse-server/users.d/default-user.xml
   postgres:
-    image: dockerhub.timeweb.cloud/postgres:16-alpine
-    container_name: postgres_db
+    image: postgres:16
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

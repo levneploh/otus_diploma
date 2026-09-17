@@ -19,15 +19,40 @@
  ### Setup 
 
 создаем общую сеть для всех compose
+```
 docker network create lev_diploma_net
+```
+
+```
 mkdir otus
 cd otus
 git clone git@github.com:levneploh/otus_diploma.git
 cd otus_diploma
 
+```
+
+
+```
+.
+├── airflow
+├── base_infra
+├── README.md
+└── superset
+
+```
+
+### base_infra
  
- 1 - docker-compose.yaml
   -  здесь живут clickhouse, kafka, postgres, mysql, minio, tools
+просто поднимаем через docker compose
+
+```
+cd base_infra
+docker compose up -d
+```
+
+### airflow
+
 
  2 - отдельно устанавливаем superset и airflow (c драйверами для бд).
  2.1 airflow setup
