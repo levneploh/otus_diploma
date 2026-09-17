@@ -115,6 +115,47 @@ docker compose -f docker-compose-non-dev.yml build
  docker compose -f docker-compose-non-dev.yml up -d
  ```
 
+
+
+запускаем генератор данных из директории base_infra
+```
+docker compose --profile seed build generator
+docker compose --profile seed run --rm generator
+```
+
+
+### создаем коннекты в airflow 
+подтягиваем пароли - 
+```
+source base_infra/.env
+
+```
+
+```
+cd airflow
+
+```
+
+
+```
+docker compose exec airflow-scheduler airflow connections add postgres_source \
+  --conn-type postgres --conn-host postgres --conn-login app \
+  --conn-password "${POSTGRES_PASSWORD}" --conn-port 5432 --conn-schema marketplace
+
+docker compose exec airflow-scheduler airflow connections add mysql_source \
+  --conn-type mysql --conn-host mysql --conn-login app \
+  --conn-password "${MYSQL_PASSWORD}" --conn-port 3306 --conn-schema dict
+
+docker compose exec airflow-scheduler airflow connections add minio \
+  --conn-type aws --conn-login "${MINIO_ROOT_USER}" \
+  --conn-password "${MINIO_ROOT_PASSWORD}" \
+  --conn-extra '{"endpoint_url": "http://minio:9000"}'
+```
+ 
+ 
+### запустить  DAG'и
+ pg_to_minio → mysql_to_minio → kafka_to_minio → dbt_run.
+ 
  
  импортируем через web dashboard в superset (admin:admin)
 ```
