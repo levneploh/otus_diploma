@@ -43,6 +43,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
+      - ./db/postgres:/docker-entrypoint-initdb.d:ro
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -55,6 +56,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./mysql_data:/var/lib/mysql
+      - ./db/mysql:/docker-entrypoint-initdb.d:ro
 
   minio:
     image: quay.io/minio/minio:latest
