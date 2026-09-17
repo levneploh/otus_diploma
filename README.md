@@ -139,7 +139,7 @@ cd airflow
 
 ```
 docker compose exec airflow-scheduler airflow connections add postgres_source \
-  --conn-type postgres --conn-host postgres --conn-login app \
+  --conn-type postgres --conn-host postgres --conn-login dbuser \
   --conn-password "${POSTGRES_PASSWORD}" --conn-port 5432 --conn-schema marketplace
 
 docker compose exec airflow-scheduler airflow connections add mysql_source \
@@ -161,4 +161,7 @@ docker compose exec airflow-scheduler airflow connections add minio \
 ```
 superset-files/dashboard_export_20260917T222708.zip
 ```
+
+
+
 
