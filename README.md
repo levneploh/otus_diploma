@@ -116,9 +116,8 @@ docker compose -f docker-compose-non-dev.yml build
  ```
 
  
- 4 - генерируем тестовые данные 
-     docker compose --profile seed run --rm generator
- 5 - далее запускаем подряд dags - 
-     pg_to_minio → mysql_to_minio → kafka_to_minio → dbt_run
-    
- 6 - смотрим dashbord @ superset.
+ импортируем через web dashboard в superset (admin:admin)
+```
+superset-files/dashboard_export_20260917T222708.zip
+```
+
