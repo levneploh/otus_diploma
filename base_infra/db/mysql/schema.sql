@@ -7,11 +7,11 @@
 -- and payments.vas_type_id from PostgreSQL.
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS dict
+CREATE DATABASE IF NOT EXISTS dicts
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE dict;
+USE dicts;
 
 -- Listing categories (tree via parent_id)
 CREATE TABLE IF NOT EXISTS categories (
