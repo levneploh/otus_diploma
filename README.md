@@ -51,18 +51,22 @@ cd base_infra
 docker compose up -d
 ```
 
+
+отдельно устанавливаем superset и airflow
+
 ### airflow
+```
+cd airflow
+#создайте .env файл:
+KEY=$(python3 -c "import base64, os; print(base64.urlsafe_b64encode(os.urandom(32)).decode())")
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+echo "FERNET_KEY=${KEY}" >> .env
+```
 
-
- 2 - отдельно устанавливаем superset и airflow (c драйверами для бд).
- 2.1 airflow setup
- cd airflow
- создайте .env файл:
- KEY=$(python3 -c "import base64, os; print(base64.urlsafe_b64encode(os.urandom(32)).decode())")
- echo -e "AIRFLOW_UID=$(id -u)" > .env
- echo "FERNET_KEY=${KEY}" >> .env
-
- docker compose up -d
+```
+docker compose up -d
+```
+ 
 
  2.2 superset
  
