@@ -48,6 +48,8 @@ cd otus_diploma
 
 ```
 cd base_infra
+# или используем .env из примера, или задаем свой
+cp .env.example .env
 docker compose up -d
 ```
 
